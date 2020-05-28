@@ -6,15 +6,15 @@ import java.util.ArrayList;
 
 public class Miner {
 
-    public static int hash, generated_hash, min, max;
-    public static ArrayList<Integer> codes = new ArrayList<>();
+    public int hash, generated_hash;
+    public int min=1, max=50;
+    public ArrayList<Integer> codes = new ArrayList<>();
+    public boolean running = true;
+    Crypto crypto = new Crypto(hash, generated_hash, min, max, codes);
 
-    public static void main(String[] args){
-        max = 50;
-        min = 1;
-        Crypto crypto = new Crypto(hash, generated_hash, min, max, codes);
-
-        crypto.setHash();
-        System.out.println("Return hash: " + crypto.get_Hash());
+    public void run(){
+        while (running){
+            crypto.setHash();
+        }
     }
 }
