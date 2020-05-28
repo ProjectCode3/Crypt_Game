@@ -3,6 +3,7 @@ package main;
 import Crypto.Crypto;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Miner {
 
@@ -15,6 +16,20 @@ public class Miner {
     public void run(){
         while (running){
             crypto.setHash();
+            generate_Hash();
+        }
+    }
+
+    public void generate_Hash(){
+        Random rand = new Random();
+        for (int i=0; i<=50; i++){
+            int gen_code = rand.nextInt((max-min) + 1);
+            if (codes.contains(gen_code)){
+                running = false;
+                System.out.println("Generated Code Has Been Found");
+            } else {
+                running = true;
+            }
         }
     }
 }
